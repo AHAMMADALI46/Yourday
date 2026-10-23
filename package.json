@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Yourday — Penzu Pro-inspired Private Daily Journal & Encrypted Writing Sanctuary with Google Drive Background Sync",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "start": "node local-server.js",
+    "dev": "node local-server.js"
   },
   "keywords": [
     "journal",
