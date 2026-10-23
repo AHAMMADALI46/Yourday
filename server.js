@@ -5,23 +5,32 @@ const path = require('path');
 const crypto = require('crypto');
 const { URL } = require('url');
 
+const IS_VERCEL = Boolean(process.env.VERCEL || process.env.NOW_REGION);
 const PORT = process.env.PORT || 3847;
-const DATA_DIR = path.join(__dirname, 'data');
+const DATA_DIR = IS_VERCEL ? path.join('/tmp', 'data') : path.join(__dirname, 'data');
 const DB_FILE = path.join(DATA_DIR, 'yourday-db.json');
 const DRIVE_MIRROR_DIR = path.join(DATA_DIR, 'gdrive-mirror');
-const PUBLIC_DIR = path.join(__dirname, 'public');
+const PUBLIC_DIR = fs.existsSync(path.join(__dirname, 'public')) ? path.join(__dirname, 'public') : __dirname;
 
-if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
-if (!fs.existsSync(DRIVE_MIRROR_DIR)) fs.mkdirSync(DRIVE_MIRROR_DIR, { recursive: true });
+try {
+  if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
+  if (!fs.existsSync(DRIVE_MIRROR_DIR)) fs.mkdirSync(DRIVE_MIRROR_DIR, { recursive: true });
+} catch (e) {
+  console.warn('Could not initialize local data dirs:', e.message);
+}
 
 // Load or generate persistent server secret for JWT signing and AES-256-GCM at-rest encryption
 const SECRET_FILE = path.join(DATA_DIR, '.server-secret');
-let SERVER_SECRET;
-if (fs.existsSync(SECRET_FILE)) {
-  SERVER_SECRET = fs.readFileSync(SECRET_FILE, 'utf8').trim();
-} else {
-  SERVER_SECRET = crypto.randomBytes(48).toString('hex');
-  fs.writeFileSync(SECRET_FILE, SERVER_SECRET, { mode: 0o600 });
+let SERVER_SECRET = 'yourday-pro-production-secret-' + (process.env.VERCEL_GIT_COMMIT_SHA || 'default');
+try {
+  if (fs.existsSync(SECRET_FILE)) {
+    SERVER_SECRET = fs.readFileSync(SECRET_FILE, 'utf8').trim();
+  } else {
+    SERVER_SECRET = crypto.randomBytes(48).toString('hex');
+    fs.writeFileSync(SECRET_FILE, SERVER_SECRET, { mode: 0o600 });
+  }
+} catch (e) {
+  // Read-only filesystem fallback
 }
 
 // Cryptographic helpers
@@ -323,9 +332,17 @@ function createInitialDatabase() {
 
 function loadDb() {
   if (!fs.existsSync(DB_FILE)) {
+    // If bundled db exists in repo, prefer it
+    const bundledDb = path.join(__dirname, 'data', 'yourday-db.json');
+    if (fs.existsSync(bundledDb) && bundledDb !== DB_FILE) {
+      try {
+        const parsed = JSON.parse(fs.readFileSync(bundledDb, 'utf8'));
+        saveDb(parsed);
+        return parsed;
+      } catch {}
+    }
     const initial = createInitialDatabase();
     saveDb(initial);
-    // Also write initial Drive Mirror files
     syncUserToLocalDriveMirror(initial, initial.users[0]);
     return initial;
   }
@@ -340,9 +357,13 @@ function loadDb() {
 }
 
 function saveDb(db) {
-  const tempFile = `${DB_FILE}.tmp`;
-  fs.writeFileSync(tempFile, JSON.stringify(db, null, 2), 'utf8');
-  fs.renameSync(tempFile, DB_FILE);
+  try {
+    const tempFile = `${DB_FILE}.tmp`;
+    fs.writeFileSync(tempFile, JSON.stringify(db, null, 2), 'utf8');
+    fs.renameSync(tempFile, DB_FILE);
+  } catch (err) {
+    console.warn('Could not persist DB to disk (stateless environment):', err.message);
+  }
 }
 
 // Helper: Generate Markdown export for a journal and its entries
@@ -1525,10 +1546,14 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-server.listen(PORT, () => {
-  console.log(`\n=============================================================`);
-  console.log(`  Yourday Pro — Private Daily Journal & Google Drive Sync`);
-  console.log(`  Server running at: http://localhost:${PORT}`);
-  console.log(`  Google Drive Mirror: ${DRIVE_MIRROR_DIR}`);
-  console.log(`=============================================================\n`);
-});
+if (!IS_VERCEL && !process.env.LAMBDA_TASK_ROOT) {
+  server.listen(PORT, () => {
+    console.log(`\n=============================================================`);
+    console.log(`  Yourday Pro — Private Daily Journal & Google Drive Sync`);
+    console.log(`  Server running at: http://localhost:${PORT}`);
+    console.log(`  Google Drive Mirror: ${DRIVE_MIRROR_DIR}`);
+    console.log(`=============================================================\n`);
+  });
+}
+
+module.exports = server;
