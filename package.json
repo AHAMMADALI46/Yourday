@@ -1,0 +1,19 @@
+{
+  "name": "yourday-journal-pro",
+  "version": "1.0.0",
+  "description": "Yourday — Penzu Pro-inspired Private Daily Journal & Encrypted Writing Sanctuary with Google Drive Background Sync",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "journal",
+    "diary",
+    "penzu-pro",
+    "yourday",
+    "google-drive-sync",
+    "encryption"
+  ],
+  "license": "MIT"
+}

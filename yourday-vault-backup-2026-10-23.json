@@ -1,0 +1,207 @@
+{
+  "app": "Yourday Pro",
+  "schemaVersion": "1.0.0",
+  "exportedAt": "2026-10-23T01:00:37.398Z",
+  "account": {
+    "email": "alex.yourday@gmail.com",
+    "gmailAccount": "alex.yourday@gmail.com",
+    "name": "Alex Rivera"
+  },
+  "journals": [
+    {
+      "id": "jrn_daily_reflections",
+      "title": "Daily Reflections",
+      "subtitle": "Morning gratitude, evening thoughts & daily mindfulness",
+      "category": "Personal",
+      "coverStyle": "leather-amber",
+      "paperTheme": "parchment",
+      "fontFamily": "Lora",
+      "isLocked": false,
+      "lockType": "none",
+      "createdAt": "2026-10-20T00:39:43.562Z",
+      "updatedAt": "2026-10-23T00:43:01.532Z"
+    },
+    {
+      "id": "jrn_private_vault",
+      "title": "Encrypted Vault",
+      "subtitle": "AES-256-GCM locked private thoughts (PIN: 2468)",
+      "category": "Private Vault",
+      "coverStyle": "midnight-gold",
+      "paperTheme": "midnight",
+      "fontFamily": "Merriweather",
+      "isLocked": true,
+      "lockType": "AES-256-GCM",
+      "createdAt": "2026-10-20T00:39:43.562Z",
+      "updatedAt": "2026-10-22T00:39:43.562Z"
+    },
+    {
+      "id": "jrn_wanderlust_notes",
+      "title": "Creative & Travel Log",
+      "subtitle": "Ideas, sketches, books & weekend adventures",
+      "category": "Creativity",
+      "coverStyle": "botanical-sage",
+      "paperTheme": "ivory-lined",
+      "fontFamily": "Caveat",
+      "isLocked": false,
+      "lockType": "none",
+      "createdAt": "2026-10-20T00:39:43.562Z",
+      "updatedAt": "2026-10-20T00:39:43.562Z"
+    }
+  ],
+  "entries": [
+    {
+      "id": "ent_welcome_today",
+      "journalId": "jrn_daily_reflections",
+      "userId": "usr_demo_yourday",
+      "title": "Welcome to Yourday Pro — My Private Daily Sanctuary",
+      "content": "<p>Today marks the beginning of my daily writing ritual inside <strong>Yourday Pro</strong>. Having a calm, private space that automatically backs up every word in the background to my <em>Gmail Google Drive</em> feels liberating.</p><blockquote>\"Fill your paper with the breathings of your heart.\" — William Wordsworth</blockquote><p><strong>Three things I am grateful for today:</strong></p><ul><li>A quiet cup of coffee before the world wakes up</li><li>Encrypted, distraction-free journaling with custom paper themes and fonts</li><li>Automatic background sync to my Google Drive folder so my memories are safe forever</li></ul><p>Tomorrow I want to focus on deep work in the morning and take a 30-minute walk at sunset.</p>",
+      "plainText": "Today marks the beginning of my daily writing ritual inside Yourday Pro. Having a calm, private space that automatically backs up every word in the background to my Gmail Google Drive feels liberating. \"Fill your paper with the breathings of your heart.\" — William Wordsworth Three things I am grateful for today: A quiet cup of coffee before the world wakes up Encrypted, distraction-free journaling with custom paper themes and fonts Automatic background sync to my Google Drive folder so my memories are safe forever Tomorrow I want to focus on deep work in the morning and take a 30-minute walk at sunset.",
+      "wordCount": 98,
+      "charCount": 598,
+      "entryDate": "2026-10-23T00:39:43.551Z",
+      "createdAt": "2026-10-23T00:39:43.551Z",
+      "updatedAt": "2026-10-23T00:39:43.551Z",
+      "tags": [
+        "gratitude",
+        "mindfulness",
+        "yourday-pro",
+        "goals"
+      ],
+      "mood": "inspired",
+      "weather": "sunny",
+      "location": "Home Study",
+      "starred": true,
+      "trashed": false,
+      "photos": [],
+      "driveSyncStatus": "synced",
+      "lastSyncedAt": "2026-10-23T01:00:25.413Z",
+      "versions": [
+        {
+          "versionId": "v_initial_1",
+          "savedAt": "2026-10-22T00:39:43.562Z",
+          "title": "Welcome to Yourday Pro — First Draft",
+          "content": "<p>Starting my new daily journal in Yourday Pro with background Google Drive sync.</p>",
+          "wordCount": 14
+        }
+      ]
+    },
+    {
+      "id": "ent_yesterday_reflection",
+      "journalId": "jrn_daily_reflections",
+      "userId": "usr_demo_yourday",
+      "title": "Evening Unwind & Digital Minimalism",
+      "content": "<p>Spent the evening disconnected from notifications. Writing long-form entries on warm lined parchment makes it much easier to slow down and untangle the day's thoughts.</p><p>Key takeaways from today's reading:</p><ol><li>Capture ideas immediately before context evaporates.</li><li>Review the week every Sunday evening using global tag search.</li><li>Keep personal reflections separate from work tasks.</li></ol>",
+      "plainText": "Spent the evening disconnected from notifications. Writing long-form entries on warm lined parchment makes it much easier to slow down and untangle the day's thoughts. Key takeaways from today's reading: 1. Capture ideas immediately before context evaporates. 2. Review the week every Sunday evening using global tag search. 3. Keep personal reflections separate from work tasks.",
+      "wordCount": 58,
+      "charCount": 374,
+      "entryDate": "2026-10-22T00:39:43.562Z",
+      "createdAt": "2026-10-22T00:39:43.562Z",
+      "updatedAt": "2026-10-22T00:39:43.562Z",
+      "tags": [
+        "reflection",
+        "minimalism",
+        "reading"
+      ],
+      "mood": "calm",
+      "weather": "clear-night",
+      "location": "Reading Corner",
+      "starred": false,
+      "trashed": false,
+      "photos": [],
+      "driveSyncStatus": "synced",
+      "lastSyncedAt": "2026-10-23T01:00:25.413Z",
+      "versions": []
+    },
+    {
+      "id": "ent_vault_secret",
+      "journalId": "jrn_private_vault",
+      "userId": "usr_demo_yourday",
+      "title": "Long-Term Life Blueprint & Private Notes",
+      "content": "<p>This entry lives inside my <strong>AES-256-GCM Encrypted Vault</strong>. Even when someone is viewing my bookshelf, this journal requires its dedicated lock password (<code>2468</code>) before any entry titles or contents can be accessed.</p><p><strong>5-Year Vision Milestones:</strong></p><ul><li>Build sustainable creative systems that compound every year</li><li>Maintain a 365-day daily journaling streak in Yourday</li><li>Keep all personal archives synced to my Gmail Google Drive vault</li></ul>",
+      "plainText": "This entry lives inside my AES-256-GCM Encrypted Vault. Even when someone is viewing my bookshelf, this journal requires its dedicated lock password (2468) before any entry titles or contents can be accessed. 5-Year Vision Milestones: Build sustainable creative systems that compound every year Maintain a 365-day daily journaling streak in Yourday Keep all personal archives synced to my Gmail Google Drive vault",
+      "wordCount": 65,
+      "charCount": 418,
+      "entryDate": "2026-10-22T00:39:43.562Z",
+      "createdAt": "2026-10-22T00:39:43.562Z",
+      "updatedAt": "2026-10-22T00:39:43.562Z",
+      "tags": [
+        "vault",
+        "vision",
+        "encrypted"
+      ],
+      "mood": "focused",
+      "weather": "cloudy",
+      "location": "Private Vault",
+      "starred": true,
+      "trashed": false,
+      "photos": [],
+      "driveSyncStatus": "synced",
+      "lastSyncedAt": "2026-10-23T01:00:25.413Z",
+      "versions": []
+    },
+    {
+      "id": "ent_travel_kyoto",
+      "journalId": "jrn_wanderlust_notes",
+      "userId": "usr_demo_yourday",
+      "title": "Autumn Trails & Coffee Roasters",
+      "content": "<p>Walked five miles along the river trail this afternoon. The cedar trees after rain smelled incredible, and I sketched a few architectural details at the corner café.</p><p>Using the <em>Caveat</em> handwritten font from the Pro Font Bundle gives this notebook the exact feel of a pocket field journal.</p>",
+      "plainText": "Walked five miles along the river trail this afternoon. The cedar trees after rain smelled incredible, and I sketched a few architectural details at the corner café. Using the Caveat handwritten font from the Pro Font Bundle gives this notebook the exact feel of a pocket field journal.",
+      "wordCount": 48,
+      "charCount": 289,
+      "entryDate": "2026-10-20T00:39:43.562Z",
+      "createdAt": "2026-10-20T00:39:43.562Z",
+      "updatedAt": "2026-10-20T00:39:43.562Z",
+      "tags": [
+        "travel",
+        "autumn",
+        "coffee",
+        "sketchbook"
+      ],
+      "mood": "happy",
+      "weather": "rainy",
+      "location": "River Trail Café",
+      "starred": false,
+      "trashed": false,
+      "photos": [],
+      "driveSyncStatus": "synced",
+      "lastSyncedAt": "2026-10-23T01:00:25.413Z",
+      "versions": []
+    },
+    {
+      "id": "ent_f896685b8873",
+      "journalId": "jrn_daily_reflections",
+      "userId": "usr_demo_yourday",
+      "title": "Untitled Entry",
+      "content": "<p>How are you doing today? i hope you are doing&nbsp;</p>",
+      "plainText": "How are you doing today? i hope you are doing",
+      "wordCount": 10,
+      "charCount": 45,
+      "entryDate": "2026-10-23T00:39:00.000Z",
+      "createdAt": "2026-10-23T00:39:44.437Z",
+      "updatedAt": "2026-10-23T00:43:01.532Z",
+      "tags": [
+        "verification",
+        "google-drive",
+        "penzu-pro"
+      ],
+      "mood": "inspired",
+      "weather": "sunny",
+      "location": "",
+      "starred": false,
+      "trashed": false,
+      "photos": [],
+      "encryptedEnvelope": null,
+      "driveSyncStatus": "synced",
+      "lastSyncedAt": "2026-10-23T01:00:25.413Z",
+      "versions": [
+        {
+          "versionId": "ver_78ea5b27",
+          "savedAt": "2026-10-23T00:39:44.437Z",
+          "title": "Verified Daily Entry with Background Gmail Drive Sync",
+          "content": "<p>Testing automatic background sync to Google Drive storage.</p>",
+          "wordCount": 8
+        }
+      ]
+    }
+  ]
+}

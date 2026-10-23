@@ -1,0 +1,569 @@
+{
+  "users": [
+    {
+      "id": "usr_demo_yourday",
+      "name": "Alex Rivera",
+      "email": "alex.yourday@gmail.com",
+      "passwordHash": "4610c9c450a76ff823757559302f63a3:b2b099f2071343f0d395f29c16295ceb1aef45550fcdab58c8a253fc76cca982a6c6b417b13d7e8c243b6b0dab09e49fa0f4c9168ea22ce2b5330b18308996f6",
+      "appPinHash": "3470aa2f804fda3b73556fad2de70d7d:d937b47e15a754cff110f582df8fe69b1e9e8f5ef979f78c0045dd1122bae84c805ad188cfff30aaa4e589dc6b885e99b6f98e9e5b82b9f3c04ff0ac074ad497",
+      "plan": "Yourday Pro+",
+      "createdAt": "2026-10-20T00:39:43.562Z",
+      "preferences": {
+        "defaultPaperTheme": "parchment",
+        "defaultFont": "Lora",
+        "fontSize": "18px",
+        "lineSpacing": "1.8",
+        "autoLockMinutes": 15,
+        "reminderEnabled": true,
+        "reminderTime": "20:30",
+        "reminderDays": [
+          "Mon",
+          "Tue",
+          "Wed",
+          "Thu",
+          "Fri",
+          "Sat",
+          "Sun"
+        ]
+      },
+      "driveConfig": {
+        "connected": true,
+        "mode": "hybrid-drive",
+        "gmailAccount": "alex.yourday@gmail.com",
+        "clientId": "",
+        "accessToken": "ya29.a0AX07CmvGkxMqwXHYKOdZD7l7XLDa8Kei_41VtSOIR1FR6pR4Q6yODBMBaCD_255dng4PNBRsJedIcO6naW1M2IJAs187VCJw8hvI2radCc-oS9Hs2cdRp3FPvUfZJT2QCfod9Aw8NNXRhNeQR09RThiCD3SEAJKfK8sztjUG9UMQff7J-hQl9_XjyyuY1bBB3xhHHSoaCgYKAdASARQSFQHGX2MiIU_0g-s9ta0pHA3MuCeYIQ0206",
+        "appsScriptWebhookUrl": "",
+        "folderName": "Yourday Journals",
+        "driveFolderId": "1nk3UeC6G8cg_OmWHVLKkLj63vqAtTgqv",
+        "autoSyncOnSave": true,
+        "encryptBeforeUpload": false,
+        "lastSyncedAt": "2026-10-23T01:00:34.455Z",
+        "syncHistory": [
+          {
+            "id": "sync_7ab5fdf2",
+            "timestamp": "2026-10-23T01:00:34.455Z",
+            "trigger": "manual-sync",
+            "status": "google-drive-api-synced",
+            "filesUpdated": 4,
+            "destination": "Google Drive API (alex.yourday@gmail.com)"
+          },
+          {
+            "id": "sync_eb027be5",
+            "timestamp": "2026-10-23T01:00:25.413Z",
+            "trigger": "manual-sync",
+            "status": "google-drive-api-synced",
+            "filesUpdated": 4,
+            "destination": "Google Drive API (alex.yourday@gmail.com)"
+          },
+          {
+            "id": "sync_a9a3fbb0",
+            "timestamp": "2026-10-23T00:57:52.981Z",
+            "trigger": "settings-update",
+            "status": "mirror-synced (oauth-refresh-needed)",
+            "filesUpdated": 4,
+            "destination": "Google Drive Sync (alex.yourday@gmail.com)"
+          },
+          {
+            "id": "sync_1f9b8f4e",
+            "timestamp": "2026-10-23T00:57:47.784Z",
+            "trigger": "settings-update",
+            "status": "mirror-synced (oauth-refresh-needed)",
+            "filesUpdated": 4,
+            "destination": "Google Drive Sync (alex.yourday@gmail.com)"
+          },
+          {
+            "id": "sync_4fe7fe52",
+            "timestamp": "2026-10-23T00:57:35.736Z",
+            "trigger": "manual-sync",
+            "status": "mirror-synced (oauth-refresh-needed)",
+            "filesUpdated": 4,
+            "destination": "Google Drive Sync (alex.yourday@gmail.com)"
+          },
+          {
+            "id": "sync_181bf71d",
+            "timestamp": "2026-10-23T00:43:01.532Z",
+            "trigger": "entry-autosave",
+            "status": "background-drive-synced",
+            "filesUpdated": 4,
+            "destination": "Google Drive Sync (alex.yourday@gmail.com)"
+          },
+          {
+            "id": "sync_6f25b637",
+            "timestamp": "2026-10-23T00:42:56.747Z",
+            "trigger": "entry-autosave",
+            "status": "background-drive-synced",
+            "filesUpdated": 4,
+            "destination": "Google Drive Sync (alex.yourday@gmail.com)"
+          },
+          {
+            "id": "sync_c1f68cea",
+            "timestamp": "2026-10-23T00:42:49.701Z",
+            "trigger": "entry-autosave",
+            "status": "background-drive-synced",
+            "filesUpdated": 4,
+            "destination": "Google Drive Sync (alex.yourday@gmail.com)"
+          },
+          {
+            "id": "sync_f376527f",
+            "timestamp": "2026-10-23T00:42:44.325Z",
+            "trigger": "entry-autosave",
+            "status": "background-drive-synced",
+            "filesUpdated": 4,
+            "destination": "Google Drive Sync (alex.yourday@gmail.com)"
+          },
+          {
+            "id": "sync_a1c889ce",
+            "timestamp": "2026-10-23T00:39:44.439Z",
+            "trigger": "entry-created",
+            "status": "background-drive-synced",
+            "filesUpdated": 4,
+            "destination": "Google Drive Sync (alex.yourday@gmail.com)"
+          },
+          {
+            "id": "sync_init_1",
+            "timestamp": "2026-10-23T00:39:43.551Z",
+            "status": "synced",
+            "filesUpdated": 4,
+            "destination": "Google Drive (Yourday Journals)"
+          }
+        ],
+        "webViewLink": "https://drive.google.com/drive/folders/1nk3UeC6G8cg_OmWHVLKkLj63vqAtTgqv",
+        "mirrorPath": "C:\\Users\\USER\\Yourday\\data\\gdrive-mirror\\alex.yourday@gmail.com\\Yourday Journals",
+        "lastRemoteError": null
+      }
+    },
+    {
+      "id": "usr_c42c8ba3e24a",
+      "name": "Ahammadshaik",
+      "email": "omniskali@gmail.com",
+      "passwordHash": "39e17760816da96ce99ee76db8ddc6f7:5ddaa6bbf42c8fe526021d2ca7def98e4ab04f9e2819d8d9c6de35f259a61a461a7ede3ff574e0b067e376a11a8f0cdc662582407917df7f60e0e81595fa746e",
+      "appPinHash": null,
+      "plan": "Yourday Pro+",
+      "createdAt": "2026-10-23T01:02:48.293Z",
+      "preferences": {
+        "defaultPaperTheme": "parchment",
+        "defaultFont": "Lora",
+        "fontSize": "18px",
+        "lineSpacing": "1.8",
+        "autoLockMinutes": 15,
+        "reminderEnabled": true,
+        "reminderTime": "20:30",
+        "reminderDays": [
+          "Mon",
+          "Tue",
+          "Wed",
+          "Thu",
+          "Fri",
+          "Sat",
+          "Sun"
+        ]
+      },
+      "driveConfig": {
+        "connected": true,
+        "mode": "hybrid-drive",
+        "gmailAccount": "omniskali@gmail.com",
+        "clientId": "",
+        "accessToken": "",
+        "appsScriptWebhookUrl": "",
+        "folderName": "Yourday Journals",
+        "driveFolderId": "local_mirror_yourday_journals",
+        "autoSyncOnSave": true,
+        "encryptBeforeUpload": false,
+        "lastSyncedAt": "2026-10-23T01:07:16.011Z",
+        "syncHistory": [
+          {
+            "id": "sync_9d1c6ba4",
+            "timestamp": "2026-10-23T01:07:16.011Z",
+            "trigger": "entry-trash",
+            "status": "background-drive-synced",
+            "filesUpdated": 3,
+            "destination": "Google Drive Sync (omniskali@gmail.com)"
+          },
+          {
+            "id": "sync_8f683e3a",
+            "timestamp": "2026-10-23T01:07:03.020Z",
+            "trigger": "journal-updated",
+            "status": "background-drive-synced",
+            "filesUpdated": 3,
+            "destination": "Google Drive Sync (omniskali@gmail.com)"
+          },
+          {
+            "id": "sync_d44e1545",
+            "timestamp": "2026-10-23T01:06:59.170Z",
+            "trigger": "journal-updated",
+            "status": "background-drive-synced",
+            "filesUpdated": 3,
+            "destination": "Google Drive Sync (omniskali@gmail.com)"
+          },
+          {
+            "id": "sync_7d6c8b1a",
+            "timestamp": "2026-10-23T01:06:51.254Z",
+            "trigger": "journal-updated",
+            "status": "background-drive-synced",
+            "filesUpdated": 3,
+            "destination": "Google Drive Sync (omniskali@gmail.com)"
+          },
+          {
+            "id": "sync_49212b11",
+            "timestamp": "2026-10-23T01:06:45.773Z",
+            "trigger": "journal-updated",
+            "status": "background-drive-synced",
+            "filesUpdated": 3,
+            "destination": "Google Drive Sync (omniskali@gmail.com)"
+          },
+          {
+            "id": "sync_2d3e66ee",
+            "timestamp": "2026-10-23T01:06:40.386Z",
+            "trigger": "journal-updated",
+            "status": "background-drive-synced",
+            "filesUpdated": 3,
+            "destination": "Google Drive Sync (omniskali@gmail.com)"
+          },
+          {
+            "id": "sync_bb464576",
+            "timestamp": "2026-10-23T01:06:23.595Z",
+            "trigger": "manual-sync",
+            "status": "background-drive-synced",
+            "filesUpdated": 3,
+            "destination": "Google Drive Sync (omniskali@gmail.com)"
+          },
+          {
+            "id": "sync_ddcd731e",
+            "timestamp": "2026-10-23T01:06:17.675Z",
+            "trigger": "entry-autosave",
+            "status": "background-drive-synced",
+            "filesUpdated": 3,
+            "destination": "Google Drive Sync (omniskali@gmail.com)"
+          },
+          {
+            "id": "sync_adb8a953",
+            "timestamp": "2026-10-23T01:06:06.169Z",
+            "trigger": "entry-autosave",
+            "status": "background-drive-synced",
+            "filesUpdated": 3,
+            "destination": "Google Drive Sync (omniskali@gmail.com)"
+          },
+          {
+            "id": "sync_3927cf4b",
+            "timestamp": "2026-10-23T01:06:01.952Z",
+            "trigger": "entry-autosave",
+            "status": "background-drive-synced",
+            "filesUpdated": 3,
+            "destination": "Google Drive Sync (omniskali@gmail.com)"
+          },
+          {
+            "id": "sync_28e9d324",
+            "timestamp": "2026-10-23T01:03:40.864Z",
+            "trigger": "manual-sync",
+            "status": "background-drive-synced",
+            "filesUpdated": 3,
+            "destination": "Google Drive Sync (omniskali@gmail.com)"
+          },
+          {
+            "id": "sync_4cfeb621",
+            "timestamp": "2026-10-23T01:03:23.620Z",
+            "trigger": "entry-autosave",
+            "status": "background-drive-synced",
+            "filesUpdated": 3,
+            "destination": "Google Drive Sync (omniskali@gmail.com)"
+          },
+          {
+            "id": "sync_c151d568",
+            "timestamp": "2026-10-23T01:02:48.374Z",
+            "trigger": "account-registration",
+            "status": "background-drive-synced",
+            "filesUpdated": 3,
+            "destination": "Google Drive Sync (omniskali@gmail.com)"
+          }
+        ],
+        "webViewLink": "https://drive.google.com/drive/my-drive",
+        "mirrorPath": "C:\\Users\\USER\\Yourday\\data\\gdrive-mirror\\omniskali@gmail.com\\Yourday Journals",
+        "lastRemoteError": null
+      }
+    }
+  ],
+  "journals": [
+    {
+      "id": "jrn_daily_reflections",
+      "userId": "usr_demo_yourday",
+      "title": "Daily Reflections",
+      "subtitle": "Morning gratitude, evening thoughts & daily mindfulness",
+      "category": "Personal",
+      "coverStyle": "leather-amber",
+      "coverColor": "#7c4328",
+      "accentColor": "#d97706",
+      "icon": "book-open",
+      "paperTheme": "parchment",
+      "fontFamily": "Lora",
+      "isLocked": false,
+      "lockType": "none",
+      "lockPasswordHash": null,
+      "createdAt": "2026-10-20T00:39:43.562Z",
+      "updatedAt": "2026-10-23T00:43:01.532Z"
+    },
+    {
+      "id": "jrn_private_vault",
+      "userId": "usr_demo_yourday",
+      "title": "Encrypted Vault",
+      "subtitle": "AES-256-GCM locked private thoughts (PIN: 2468)",
+      "category": "Private Vault",
+      "coverStyle": "midnight-gold",
+      "coverColor": "#1e1b4b",
+      "accentColor": "#f59e0b",
+      "icon": "shield-lock",
+      "paperTheme": "midnight",
+      "fontFamily": "Merriweather",
+      "isLocked": true,
+      "lockType": "AES-256-GCM",
+      "lockPasswordHash": "1c9340a0c1dceecfe5c5db8d48f4dbcd:326ce4220236647eca2fc8a23d2dae02de69b179eed4b2354adb383a0d6d23550739d071b4ec46cf9b4b1bd2d58be4d13470c24b9ecb3230dff375758354fc10",
+      "lockHint": "Default demo PIN is 2468",
+      "createdAt": "2026-10-20T00:39:43.562Z",
+      "updatedAt": "2026-10-22T00:39:43.562Z"
+    },
+    {
+      "id": "jrn_wanderlust_notes",
+      "userId": "usr_demo_yourday",
+      "title": "Creative & Travel Log",
+      "subtitle": "Ideas, sketches, books & weekend adventures",
+      "category": "Creativity",
+      "coverStyle": "botanical-sage",
+      "coverColor": "#14532d",
+      "accentColor": "#10b981",
+      "icon": "compass",
+      "paperTheme": "ivory-lined",
+      "fontFamily": "Caveat",
+      "isLocked": false,
+      "lockType": "none",
+      "lockPasswordHash": null,
+      "createdAt": "2026-10-20T00:39:43.562Z",
+      "updatedAt": "2026-10-20T00:39:43.562Z"
+    },
+    {
+      "id": "jrn_981e8d19258e",
+      "userId": "usr_c42c8ba3e24a",
+      "title": "Ahammadshaik's Daily Journal",
+      "subtitle": "Daily thoughts, gratitude & reflections",
+      "category": "Personal",
+      "coverStyle": "leather-amber",
+      "coverColor": "#7c4328",
+      "accentColor": "#d97706",
+      "icon": "book-open",
+      "paperTheme": "rose",
+      "fontFamily": "JetBrains Mono",
+      "isLocked": false,
+      "lockType": "none",
+      "lockPasswordHash": null,
+      "createdAt": "2026-10-23T01:02:48.293Z",
+      "updatedAt": "2026-10-23T01:07:03.019Z"
+    },
+    {
+      "id": "jrn_7a116d6df965",
+      "userId": "usr_c42c8ba3e24a",
+      "title": "Private Encrypted Vault",
+      "subtitle": "Password-locked personal sanctuary",
+      "category": "Private Vault",
+      "coverStyle": "midnight-gold",
+      "coverColor": "#1e1b4b",
+      "accentColor": "#f59e0b",
+      "icon": "shield-lock",
+      "paperTheme": "midnight",
+      "fontFamily": "Merriweather",
+      "isLocked": false,
+      "lockType": "none",
+      "lockPasswordHash": null,
+      "lockHint": "",
+      "createdAt": "2026-10-23T01:02:48.293Z",
+      "updatedAt": "2026-10-23T01:02:48.293Z"
+    }
+  ],
+  "entries": [
+    {
+      "id": "ent_welcome_today",
+      "journalId": "jrn_daily_reflections",
+      "userId": "usr_demo_yourday",
+      "title": "Welcome to Yourday Pro — My Private Daily Sanctuary",
+      "content": "<p>Today marks the beginning of my daily writing ritual inside <strong>Yourday Pro</strong>. Having a calm, private space that automatically backs up every word in the background to my <em>Gmail Google Drive</em> feels liberating.</p><blockquote>\"Fill your paper with the breathings of your heart.\" — William Wordsworth</blockquote><p><strong>Three things I am grateful for today:</strong></p><ul><li>A quiet cup of coffee before the world wakes up</li><li>Encrypted, distraction-free journaling with custom paper themes and fonts</li><li>Automatic background sync to my Google Drive folder so my memories are safe forever</li></ul><p>Tomorrow I want to focus on deep work in the morning and take a 30-minute walk at sunset.</p>",
+      "plainText": "Today marks the beginning of my daily writing ritual inside Yourday Pro. Having a calm, private space that automatically backs up every word in the background to my Gmail Google Drive feels liberating. \"Fill your paper with the breathings of your heart.\" — William Wordsworth Three things I am grateful for today: A quiet cup of coffee before the world wakes up Encrypted, distraction-free journaling with custom paper themes and fonts Automatic background sync to my Google Drive folder so my memories are safe forever Tomorrow I want to focus on deep work in the morning and take a 30-minute walk at sunset.",
+      "wordCount": 98,
+      "charCount": 598,
+      "entryDate": "2026-10-23T00:39:43.551Z",
+      "createdAt": "2026-10-23T00:39:43.551Z",
+      "updatedAt": "2026-10-23T00:39:43.551Z",
+      "tags": [
+        "gratitude",
+        "mindfulness",
+        "yourday-pro",
+        "goals"
+      ],
+      "mood": "inspired",
+      "weather": "sunny",
+      "location": "Home Study",
+      "starred": true,
+      "trashed": false,
+      "photos": [],
+      "driveSyncStatus": "synced",
+      "lastSyncedAt": "2026-10-23T01:00:34.455Z",
+      "versions": [
+        {
+          "versionId": "v_initial_1",
+          "savedAt": "2026-10-22T00:39:43.562Z",
+          "title": "Welcome to Yourday Pro — First Draft",
+          "content": "<p>Starting my new daily journal in Yourday Pro with background Google Drive sync.</p>",
+          "wordCount": 14
+        }
+      ]
+    },
+    {
+      "id": "ent_yesterday_reflection",
+      "journalId": "jrn_daily_reflections",
+      "userId": "usr_demo_yourday",
+      "title": "Evening Unwind & Digital Minimalism",
+      "content": "<p>Spent the evening disconnected from notifications. Writing long-form entries on warm lined parchment makes it much easier to slow down and untangle the day's thoughts.</p><p>Key takeaways from today's reading:</p><ol><li>Capture ideas immediately before context evaporates.</li><li>Review the week every Sunday evening using global tag search.</li><li>Keep personal reflections separate from work tasks.</li></ol>",
+      "plainText": "Spent the evening disconnected from notifications. Writing long-form entries on warm lined parchment makes it much easier to slow down and untangle the day's thoughts. Key takeaways from today's reading: 1. Capture ideas immediately before context evaporates. 2. Review the week every Sunday evening using global tag search. 3. Keep personal reflections separate from work tasks.",
+      "wordCount": 58,
+      "charCount": 374,
+      "entryDate": "2026-10-22T00:39:43.562Z",
+      "createdAt": "2026-10-22T00:39:43.562Z",
+      "updatedAt": "2026-10-22T00:39:43.562Z",
+      "tags": [
+        "reflection",
+        "minimalism",
+        "reading"
+      ],
+      "mood": "calm",
+      "weather": "clear-night",
+      "location": "Reading Corner",
+      "starred": false,
+      "trashed": false,
+      "photos": [],
+      "driveSyncStatus": "synced",
+      "lastSyncedAt": "2026-10-23T01:00:34.455Z",
+      "versions": []
+    },
+    {
+      "id": "ent_vault_secret",
+      "journalId": "jrn_private_vault",
+      "userId": "usr_demo_yourday",
+      "title": "Long-Term Life Blueprint & Private Notes",
+      "content": "<p>This entry lives inside my <strong>AES-256-GCM Encrypted Vault</strong>. Even when someone is viewing my bookshelf, this journal requires its dedicated lock password (<code>2468</code>) before any entry titles or contents can be accessed.</p><p><strong>5-Year Vision Milestones:</strong></p><ul><li>Build sustainable creative systems that compound every year</li><li>Maintain a 365-day daily journaling streak in Yourday</li><li>Keep all personal archives synced to my Gmail Google Drive vault</li></ul>",
+      "plainText": "This entry lives inside my AES-256-GCM Encrypted Vault. Even when someone is viewing my bookshelf, this journal requires its dedicated lock password (2468) before any entry titles or contents can be accessed. 5-Year Vision Milestones: Build sustainable creative systems that compound every year Maintain a 365-day daily journaling streak in Yourday Keep all personal archives synced to my Gmail Google Drive vault",
+      "wordCount": 65,
+      "charCount": 418,
+      "entryDate": "2026-10-22T00:39:43.562Z",
+      "createdAt": "2026-10-22T00:39:43.562Z",
+      "updatedAt": "2026-10-22T00:39:43.562Z",
+      "tags": [
+        "vault",
+        "vision",
+        "encrypted"
+      ],
+      "mood": "focused",
+      "weather": "cloudy",
+      "location": "Private Vault",
+      "starred": true,
+      "trashed": false,
+      "photos": [],
+      "driveSyncStatus": "synced",
+      "lastSyncedAt": "2026-10-23T01:00:34.455Z",
+      "versions": []
+    },
+    {
+      "id": "ent_travel_kyoto",
+      "journalId": "jrn_wanderlust_notes",
+      "userId": "usr_demo_yourday",
+      "title": "Autumn Trails & Coffee Roasters",
+      "content": "<p>Walked five miles along the river trail this afternoon. The cedar trees after rain smelled incredible, and I sketched a few architectural details at the corner café.</p><p>Using the <em>Caveat</em> handwritten font from the Pro Font Bundle gives this notebook the exact feel of a pocket field journal.</p>",
+      "plainText": "Walked five miles along the river trail this afternoon. The cedar trees after rain smelled incredible, and I sketched a few architectural details at the corner café. Using the Caveat handwritten font from the Pro Font Bundle gives this notebook the exact feel of a pocket field journal.",
+      "wordCount": 48,
+      "charCount": 289,
+      "entryDate": "2026-10-20T00:39:43.562Z",
+      "createdAt": "2026-10-20T00:39:43.562Z",
+      "updatedAt": "2026-10-20T00:39:43.562Z",
+      "tags": [
+        "travel",
+        "autumn",
+        "coffee",
+        "sketchbook"
+      ],
+      "mood": "happy",
+      "weather": "rainy",
+      "location": "River Trail Café",
+      "starred": false,
+      "trashed": false,
+      "photos": [],
+      "driveSyncStatus": "synced",
+      "lastSyncedAt": "2026-10-23T01:00:34.455Z",
+      "versions": []
+    },
+    {
+      "id": "ent_f896685b8873",
+      "journalId": "jrn_daily_reflections",
+      "userId": "usr_demo_yourday",
+      "title": "Untitled Entry",
+      "content": "<p>How are you doing today? i hope you are doing&nbsp;</p>",
+      "plainText": "How are you doing today? i hope you are doing",
+      "wordCount": 10,
+      "charCount": 45,
+      "entryDate": "2026-10-23T00:39:00.000Z",
+      "createdAt": "2026-10-23T00:39:44.437Z",
+      "updatedAt": "2026-10-23T00:43:01.532Z",
+      "tags": [
+        "verification",
+        "google-drive",
+        "penzu-pro"
+      ],
+      "mood": "inspired",
+      "weather": "sunny",
+      "location": "",
+      "starred": false,
+      "trashed": false,
+      "photos": [],
+      "encryptedEnvelope": null,
+      "driveSyncStatus": "synced",
+      "lastSyncedAt": "2026-10-23T01:00:34.455Z",
+      "versions": [
+        {
+          "versionId": "ver_78ea5b27",
+          "savedAt": "2026-10-23T00:39:44.437Z",
+          "title": "Verified Daily Entry with Background Gmail Drive Sync",
+          "content": "<p>Testing automatic background sync to Google Drive storage.</p>",
+          "wordCount": 8
+        }
+      ]
+    },
+    {
+      "id": "ent_d4eed26606d7",
+      "journalId": "jrn_981e8d19258e",
+      "userId": "usr_c42c8ba3e24a",
+      "title": "22-10-2026",
+      "content": "<p>Hey how are you doing, what a wonderful day today is&nbsp;</p>",
+      "plainText": "Hey how are you doing, what a wonderful day today is",
+      "wordCount": 11,
+      "charCount": 52,
+      "entryDate": "2026-10-23T01:02:00.000Z",
+      "createdAt": "2026-10-23T01:02:48.293Z",
+      "updatedAt": "2026-10-23T01:07:16.011Z",
+      "tags": [
+        "welcome",
+        "yourday"
+      ],
+      "mood": "inspired",
+      "weather": "sunny",
+      "location": "My Sanctuary",
+      "starred": true,
+      "trashed": true,
+      "photos": [],
+      "driveSyncStatus": "synced",
+      "lastSyncedAt": "2026-10-23T01:07:16.011Z",
+      "versions": [
+        {
+          "versionId": "ver_1a48ce79",
+          "savedAt": "2026-10-23T01:02:48.293Z",
+          "title": "Day One in Yourday Pro",
+          "content": "<p>Welcome to <strong>Yourday Pro</strong>, Ahammadshaik! Every journal entry you write here is automatically saved and synced in the background to your <strong>omniskali@gmail.com</strong> Google Drive storage.</p><p>Try customizing your paper theme, switching fonts, tagging entries, or locking individual journals with a private password.</p>",
+          "wordCount": 44
+        }
+      ]
+    }
+  ]
+}

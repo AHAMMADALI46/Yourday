@@ -1,0 +1,6 @@
+node_modules/
+.server-secret
+*.tmp
+data/gdrive-mirror/
+.DS_Store
+Thumbs.db

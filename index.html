@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yourday Pro — Write in Private | Personal Journal & Google Drive Sanctuary</title>
+  <!-- Google Fonts: Pro & Handwritten Font Bundle -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Dancing+Script:wght@600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Patrick+Hand&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- Google Identity Services for OAuth 2.0 Drive Sync -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body class="desk-parchment">
+
+  <!-- =========================================================================
+       1. AUTHENTICATION & LOGIN SANCTUARY SCREEN
+       ========================================================================= -->
+  <div id="authScreen" class="auth-screen">
+    <div class="auth-backdrop-pattern"></div>
+    <div class="auth-container">
+      <div class="auth-brand-panel">
+        <div class="brand-logo-row">
+          <div class="brand-emblem">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              <path d="M9 7h6M9 11h6M9 15h4"></path>
+            </svg>
+          </div>
+          <div>
+            <span class="brand-title">Yourday</span>
+            <span class="brand-pro-badge">PRO+</span>
+          </div>
+        </div>
+
+        <h1 class="auth-hero-heading">Write in Private.<br />Synced to Your Google Drive.</h1>
+        <p class="auth-hero-subtext">
+          Your personal daily journal sanctuary inspired by Penzu Pro. Enjoy unlimited custom journals, AES-256-GCM per-journal locks, handwritten fonts, version history, and automatic background storage to your Gmail Google Drive.
+        </p>
+
+        <div class="auth-feature-pills">
+          <div class="auth-feature-item">
+            <span class="feature-check">✓</span>
+            <div>
+              <strong>Unlimited Custom Journals & Covers</strong>
+              <p>Organize daily reflections, gratitude, travel, dreams & secret vaults</p>
+            </div>
+          </div>
+          <div class="auth-feature-item">
+            <span class="feature-check">✓</span>
+            <div>
+              <strong>Military-Grade Encrypted Journal Locks</strong>
+              <p>Protect individual journals with dedicated passwords & app PIN lock</p>
+            </div>
+          </div>
+          <div class="auth-feature-item">
+            <span class="feature-check">✓</span>
+            <div>
+              <strong>Background Gmail Drive Auto-Sync</strong>
+              <p>Every entry autosaves in the background directly to your Google Drive</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="auth-demo-callout">
+          <div>
+            <span class="demo-tag">INSTANT DEMO ACCESS</span>
+            <p>Want to explore Yourday Pro immediately with sample journals & encrypted vault?</p>
+          </div>
+          <button type="button" id="btnDemoLogin" class="btn-demo-quick">
+            Open Demo Pro Sanctuary →
+          </button>
+        </div>
+      </div>
+
+      <div class="auth-form-card">
+        <div class="auth-tabs">
+          <button type="button" id="tabSignIn" class="auth-tab active">Sign In</button>
+          <button type="button" id="tabRegister" class="auth-tab">Create Account</button>
+        </div>
+
+        <div id="authAlert" class="auth-alert hidden"></div>
+
+        <!-- Sign In Form -->
+        <form id="loginForm" class="auth-form">
+          <div class="form-group">
+            <label for="loginEmail">Email / Gmail Address</label>
+            <input type="email" id="loginEmail" required placeholder="you@gmail.com" value="alex.yourday@gmail.com" />
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" required placeholder="Enter your password" value="yourday123" />
+          </div>
+          <button type="submit" class="btn-primary-full">Sign In to Yourday Pro</button>
+
+          <div class="auth-divider"><span>OR CONNECT GMAIL DRIVE</span></div>
+
+          <button type="button" id="btnGoogleSignIn" class="btn-google-oauth">
+            <svg width="18" height="18" viewBox="0 0 48 48">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+            </svg>
+            <span>Sign In & Link Gmail Google Drive</span>
+          </button>
+          <p class="auth-footnote">
+            Demo Credentials: <code>alex.yourday@gmail.com</code> / <code>yourday123</code> (Vault PIN: <code>2468</code>)
+          </p>
+        </form>
+
+        <!-- Register Form -->
+        <form id="registerForm" class="auth-form hidden">
+          <div class="form-group">
+            <label for="regName">Your Name</label>
+            <input type="text" id="regName" required placeholder="e.g., Maya Lin" />
+          </div>
+          <div class="form-group">
+            <label for="regEmail">Gmail Address (Used for Login & Google Drive Sync)</label>
+            <input type="email" id="regEmail" required placeholder="yourname@gmail.com" />
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="regPassword">Account Password</label>
+              <input type="password" id="regPassword" required minlength="4" placeholder="Min. 4 characters" />
+            </div>
+            <div class="form-group">
+              <label for="regPin">App Lock PIN (Optional)</label>
+              <input type="password" id="regPin" maxlength="8" placeholder="e.g., 1234" />
+            </div>
+          </div>
+          <button type="submit" class="btn-primary-full">Create My Yourday Pro Sanctuary</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       2. APP-LEVEL PRIVACY LOCK OVERLAY (PENZU PRO QUICK LOCK)
+       ========================================================================= -->
+  <div id="appLockOverlay" class="modal-overlay hidden">
+    <div class="lock-screen-card">
+      <div class="lock-icon-circle">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+      </div>
+      <h2>Yourday Sanctuary Locked</h2>
+      <p>Enter your account PIN or password to resume reading and writing.</p>
+      <form id="appUnlockForm" class="lock-unlock-form">
+        <input type="password" id="appUnlockInput" placeholder="Enter PIN (Demo: 1234) or Password" required autofocus />
+        <div id="appUnlockError" class="lock-error hidden"></div>
+        <button type="submit" class="btn-primary-full">Unlock Sanctuary</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       3. MAIN YOURDAY PRO APPLICATION SHELL
+       ========================================================================= -->
+  <div id="appShell" class="app-shell hidden">
+
+    <!-- Top Navigation Bar -->
+    <header class="top-navbar">
+      <div class="nav-left">
+        <button type="button" id="btnToggleSidebar" class="icon-btn" title="Toggle Sidebar">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+        <div class="app-brand" id="btnGoBookshelf" title="Go to Journal Bookshelf">
+          <span class="app-brand-name">Yourday</span>
+          <span class="app-brand-badge">PRO+</span>
+        </div>
+
+        <nav class="nav-pills">
+          <button type="button" id="navBookshelf" class="nav-pill">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+            <span>Bookshelf</span>
+          </button>
+          <button type="button" id="navPad" class="nav-pill active">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 20h9"></path>
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            </svg>
+            <span>Writing Pad</span>
+          </button>
+          <button type="button" id="navCalendar" class="nav-pill">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span>Calendar & Streak</span>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Center: Global Search -->
+      <div class="nav-search-wrapper">
+        <svg class="search-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="search" id="globalSearchInput" placeholder="Search all entries, #tags, locations, or memories..." />
+      </div>
+
+      <!-- Right: Google Drive Background Sync Badge + Pro Actions -->
+      <div class="nav-right">
+        <button type="button" id="btnOpenDriveHub" class="drive-sync-pill" title="Manage Gmail Google Drive Background Storage">
+          <span id="driveSyncDot" class="sync-dot synced"></span>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span id="driveSyncLabel">Drive Synced</span>
+        </button>
+
+        <button type="button" id="btnNewEntryTop" class="btn-new-entry-top">
+          + New Entry
+        </button>
+
+        <button type="button" id="btnCustomizeTheme" class="icon-btn" title="Customize Paper Theme & Pro Fonts">
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="13.5" cy="6.5" r=".5"></circle>
+            <circle cx="17.5" cy="10.5" r=".5"></circle>
+            <circle cx="8.5" cy="7.5" r=".5"></circle>
+            <circle cx="6.5" cy="12.5" r=".5"></circle>
+            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
+          </svg>
+        </button>
+
+        <button type="button" id="btnZenMode" class="icon-btn" title="Fullscreen Zen Writing Mode (Pro+)">
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <polyline points="9 21 3 21 3 15"></polyline>
+            <line x1="21" y1="3" x2="14" y2="10"></line>
+            <line x1="3" y1="21" x2="10" y2="14"></line>
+          </svg>
+        </button>
+
+        <button type="button" id="btnQuickLock" class="icon-btn" title="Lock Sanctuary Now">
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </button>
+
+        <div class="user-profile-chip" id="btnAccountSettings" title="Account & Reminder Settings">
+          <div class="user-avatar" id="userAvatarInitials">AR</div>
+          <span id="userNameDisplay" class="user-name-short">Alex</span>
+        </div>
+
+        <button type="button" id="btnLogout" class="icon-btn" title="Sign Out">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Workspace Layout -->
+    <div class="workspace-body">
+
+      <!-- Left Sidebar: Journals Switcher, Filters, Tags & Entry List -->
+      <aside id="leftSidebar" class="left-sidebar">
+        <div class="sidebar-journal-selector">
+          <div class="sidebar-section-header">
+            <span>ACTIVE JOURNAL</span>
+            <button type="button" id="btnNewJournalSidebar" class="link-btn">+ New Journal</button>
+          </div>
+          <select id="activeJournalSelect" class="journal-select-dropdown"></select>
+        </div>
+
+        <!-- Quick Filter Tabs -->
+        <div class="sidebar-filter-list">
+          <button type="button" class="filter-item active" data-filter="all">
+            <span>All Journal Entries</span>
+            <span id="countAllEntries" class="filter-badge">0</span>
+          </button>
+          <button type="button" class="filter-item" data-filter="starred">
+            <span>★ Starred Memories</span>
+            <span id="countStarredEntries" class="filter-badge">0</span>
+          </button>
+          <button type="button" class="filter-item" data-filter="trash">
+            <span>🗑 Trash Recovery (Pro+)</span>
+            <span id="countTrashEntries" class="filter-badge">0</span>
+          </button>
+        </div>
+
+        <!-- Tag Filter Cloud -->
+        <div class="sidebar-tags-section">
+          <div class="sidebar-section-header">
+            <span>ENTRY TAGS</span>
+            <button type="button" id="btnClearTagFilter" class="link-btn hidden">Clear</button>
+          </div>
+          <div id="sidebarTagsContainer" class="sidebar-tag-pills"></div>
+        </div>
+
+        <!-- Entries Timeline List -->
+        <div class="sidebar-entries-header">
+          <span id="entriesListHeading">ENTRIES</span>
+          <span id="entriesTotalWords" class="entries-word-total">0 words</span>
+        </div>
+        <div id="sidebarEntriesList" class="sidebar-entries-list"></div>
+      </aside>
+
+      <!-- Main Stage Area -->
+      <main class="main-stage">
+
+        <!-- VIEW A: BOOKSHELF (UNLIMITED JOURNALS) -->
+        <section id="viewBookshelf" class="stage-view hidden">
+          <div class="bookshelf-header">
+            <div>
+              <h2>My Journal Bookshelf</h2>
+              <p>Create unlimited custom journals, personalize covers, and lock private notebooks with AES-256-GCM encryption.</p>
+            </div>
+            <button type="button" id="btnCreateJournalHero" class="btn-primary">
+              + Create New Journal
+            </button>
+          </div>
+
+          <div id="bookshelfGrid" class="bookshelf-grid"></div>
+        </section>
+
+        <!-- VIEW B: WRITING PAD & RICH EDITOR (DEFAULT PENZU PRO VIEW) -->
+        <section id="viewPad" class="stage-view">
+          <div id="paperPadContainer" class="paper-pad theme-parchment font-lora">
+            <!-- Decorative Binder Rings / Leather Trim -->
+            <div class="pad-top-binding">
+              <div class="pad-journal-crumb">
+                <span id="padJournalLockIcon" class="crumb-lock"></span>
+                <span id="padJournalTitle">Daily Reflections</span>
+                <span class="crumb-sep">•</span>
+                <span id="padSaveStatus" class="pad-save-status">Saved & synced to Google Drive</span>
+              </div>
+
+              <div class="pad-top-actions">
+                <button type="button" id="btnDailyPrompt" class="pad-action-btn" title="Insert a thoughtful daily writing prompt">
+                  ✨ Writing Prompt
+                </button>
+                <button type="button" id="btnVersionHistory" class="pad-action-btn" title="View & restore prior entry versions (Pro+)">
+                  🕓 History (<span id="versionCountBadge">0</span>)
+                </button>
+                <button type="button" id="btnExportEntryMd" class="pad-action-btn" title="Download this entry as Markdown">
+                  ⬇ Export
+                </button>
+                <button type="button" id="btnTrashEntry" class="pad-action-btn danger" title="Move entry to Trash">
+                  🗑
+                </button>
+              </div>
+            </div>
+
+            <!-- Entry Header: Star, Title & Backdatable Timestamp -->
+            <div class="pad-entry-header">
+              <div class="pad-title-row">
+                <button type="button" id="btnStarEntry" class="star-toggle-btn" title="Star / Favorite this entry">☆</button>
+                <input type="text" id="entryTitleInput" class="entry-title-input" placeholder="Give today's entry a title..." />
+              </div>
+
+              <div class="pad-meta-row">
+                <label class="meta-item" title="Penzu Pro: Backdate or change entry date & time">
+                  <span>📅</span>
+                  <input type="datetime-local" id="entryDateInput" class="meta-date-input" />
+                </label>
+
+                <label class="meta-item">
+                  <span>Mood:</span>
+                  <select id="entryMoodSelect" class="meta-select">
+                    <option value="inspired">✨ Inspired</option>
+                    <option value="calm">🌿 Calm</option>
+                    <option value="happy">☀️ Happy</option>
+                    <option value="grateful">🙏 Grateful</option>
+                    <option value="focused">🎯 Focused</option>
+                    <option value="reflective">🌙 Reflective</option>
+                    <option value="anxious">🌧 Overwhelmed</option>
+                  </select>
+                </label>
+
+                <label class="meta-item">
+                  <span>Weather:</span>
+                  <select id="entryWeatherSelect" class="meta-select">
+                    <option value="sunny">☀️ Sunny</option>
+                    <option value="cloudy">⛅ Cloudy</option>
+                    <option value="rainy">🌧 Rainy</option>
+                    <option value="clear-night">🌙 Clear Night</option>
+                    <option value="snowy">❄️ Snowy</option>
+                  </select>
+                </label>
+
+                <label class="meta-item location-item">
+                  <span>📍</span>
+                  <input type="text" id="entryLocationInput" class="meta-location-input" placeholder="Location (e.g. Home Study)" />
+                </label>
+              </div>
+            </div>
+
+            <!-- Rich Text Formatting Toolbar -->
+            <div class="pad-toolbar">
+              <button type="button" class="tool-btn" data-cmd="bold" title="Bold (Ctrl+B)"><b>B</b></button>
+              <button type="button" class="tool-btn" data-cmd="italic" title="Italic (Ctrl+I)"><i>I</i></button>
+              <button type="button" class="tool-btn" data-cmd="underline" title="Underline (Ctrl+U)"><u>U</u></button>
+              <button type="button" class="tool-btn" data-cmd="strikeThrough" title="Strikethrough"><s>S</s></button>
+              <span class="tool-divider"></span>
+              <button type="button" class="tool-btn" data-cmd="formatBlock" data-val="H2" title="Heading">H2</button>
+              <button type="button" class="tool-btn" data-cmd="formatBlock" data-val="BLOCKQUOTE" title="Quote">“ ”</button>
+              <button type="button" class="tool-btn" data-cmd="insertUnorderedList" title="Bullet List">• List</button>
+              <button type="button" class="tool-btn" data-cmd="insertOrderedList" title="Numbered List">1. List</button>
+              <button type="button" id="btnInsertChecklist" class="tool-btn" title="Insert Interactive Checklist">☑ Check</button>
+              <button type="button" id="btnHighlightText" class="tool-btn" title="Highlight Selection">🖍 Highlight</button>
+              <span class="tool-divider"></span>
+              <label class="tool-btn file-label" title="Insert Photo into Journal Entry">
+                🖼 Add Photo
+                <input type="file" id="entryPhotoInput" accept="image/*" class="hidden" />
+              </label>
+              <button type="button" id="btnSaveNowManual" class="tool-btn save-now-btn" title="Save & Sync to Google Drive Now">
+                ☁ Save & Sync
+              </button>
+            </div>
+
+            <!-- Editable Paper Sheet -->
+            <div id="entryEditorContent" class="entry-editor-content" contenteditable="true" spellcheck="true" data-placeholder="Begin writing your thoughts here... Everything is privately autosaved and synced to your Google Drive."></div>
+
+            <!-- Attached Photos Gallery -->
+            <div id="entryPhotosGallery" class="entry-photos-gallery hidden"></div>
+
+            <!-- Pad Footer: Tags & Live Word Counter -->
+            <div class="pad-footer">
+              <div class="pad-tags-bar">
+                <span class="tag-icon">🏷</span>
+                <div id="entryTagsChips" class="entry-tags-chips"></div>
+                <input type="text" id="entryAddTagInput" class="tag-add-input" placeholder="+ Add tag & press Enter" />
+              </div>
+              <div class="pad-stats">
+                <span id="statWordCount">0 words</span>
+                <span>•</span>
+                <span id="statCharCount">0 chars</span>
+                <span>•</span>
+                <span id="statReadTime">1 min read</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW C: CALENDAR, STREAKS & ANALYTICS -->
+        <section id="viewCalendar" class="stage-view hidden">
+          <div class="calendar-dashboard">
+            <div class="streak-kpi-grid">
+              <div class="kpi-card">
+                <span class="kpi-label">CURRENT WRITING STREAK</span>
+                <div class="kpi-value" id="kpiCurrentStreak">1 Day 🔥</div>
+                <span class="kpi-sub">Keep writing daily to build your habit</span>
+              </div>
+              <div class="kpi-card">
+                <span class="kpi-label">TOTAL ENTRIES</span>
+                <div class="kpi-value" id="kpiTotalEntries">0</div>
+                <span class="kpi-sub">Across all unlocked journals</span>
+              </div>
+              <div class="kpi-card">
+                <span class="kpi-label">TOTAL WORDS WRITTEN</span>
+                <div class="kpi-value" id="kpiTotalWords">0</div>
+                <span class="kpi-sub">Backed up to Google Drive</span>
+              </div>
+              <div class="kpi-card">
+                <span class="kpi-label">GOOGLE DRIVE VAULT</span>
+                <div class="kpi-value kpi-drive" id="kpiDriveStatus">Active ✓</div>
+                <span class="kpi-sub" id="kpiDriveAccount">alex.yourday@gmail.com</span>
+              </div>
+            </div>
+
+            <div class="calendar-panel">
+              <div class="calendar-nav-header">
+                <button type="button" id="btnPrevMonth" class="btn-secondary">← Prev</button>
+                <h3 id="calendarMonthTitle">October 2026</h3>
+                <button type="button" id="btnNextMonth" class="btn-secondary">Next →</button>
+              </div>
+              <div class="calendar-weekdays">
+                <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+              </div>
+              <div id="calendarDaysGrid" class="calendar-days-grid"></div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       4. MODAL: GOOGLE DRIVE BACKGROUND STORAGE HUB
+       ========================================================================= -->
+  <div id="driveHubModal" class="modal-overlay hidden">
+    <div class="modal-card modal-large">
+      <div class="modal-header">
+        <div>
+          <h3>☁ Gmail Google Drive Background Storage</h3>
+          <p>Automatically sync and store your journals in your personal Gmail Google Drive account.</p>
+        </div>
+        <button type="button" class="modal-close" data-close="driveHubModal">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="drive-status-banner">
+          <div>
+            <div class="drive-banner-title">
+              <span class="sync-dot synced"></span>
+              <strong id="driveHubStatusTitle">Background Google Drive Sync Enabled</strong>
+            </div>
+            <p id="driveHubLastSynced">Last synced: Just now</p>
+            <p class="drive-mirror-path">Local Drive Sync Folder: <code id="driveHubMirrorPath"></code></p>
+          </div>
+          <div class="drive-banner-actions">
+            <button type="button" id="btnSyncDriveNow" class="btn-primary">☁ Sync Now</button>
+            <button type="button" id="btnDownloadVaultJson" class="btn-secondary">⬇ Download Drive Backup</button>
+          </div>
+        </div>
+
+        <form id="driveConfigForm" class="drive-config-form">
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="driveGmailInput">Target Gmail Account</label>
+              <input type="email" id="driveGmailInput" required placeholder="your.account@gmail.com" />
+            </div>
+            <div class="form-group">
+              <label for="driveFolderInput">Google Drive Folder Name</label>
+              <input type="text" id="driveFolderInput" required placeholder="Yourday Journals" value="Yourday Journals" />
+            </div>
+          </div>
+
+          <div class="drive-connection-tabs">
+            <h4>Connect Real Google Drive Cloud API (Choose Any Method)</h4>
+            <p class="helper-text">
+              Yourday continuously saves `.md` and `yourday-vault-backup.json` files to your local Drive mirror folder. To also push directly to Google Drive Cloud in the background, provide a Google OAuth 2.0 Client ID / Access Token OR a 1-click Google Apps Script Drive Bridge URL:
+            </p>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="driveClientIdInput">Google Cloud OAuth Client ID (Optional for 1-Click Popup)</label>
+                <input type="text" id="driveClientIdInput" placeholder="123456789-abc.apps.googleusercontent.com" />
+              </div>
+              <div class="form-group">
+                <label for="driveAccessTokenInput">Google Drive OAuth 2.0 Access Token (`drive.file` scope)</label>
+                <div class="input-with-btn">
+                  <input type="password" id="driveAccessTokenInput" placeholder="ya29.a0AfH6SM... (or click Authorize Popup)" />
+                  <button type="button" id="btnAuthorizeGooglePopup" class="btn-secondary">Authorize Gmail</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="driveAppsScriptInput">
+                Alternative: Google Apps Script Drive Web App URL (Never Expires, No GCP Project Needed)
+                <button type="button" id="btnToggleAppsScriptGuide" class="link-btn">Show 30-Second Setup Code</button>
+              </label>
+              <input type="url" id="driveAppsScriptInput" placeholder="https://script.google.com/macros/s/.../exec" />
+            </div>
+
+            <div id="appsScriptGuideBox" class="apps-script-guide hidden">
+              <p><strong>How to connect your Gmail Drive in 30 seconds without Google Cloud Console:</strong></p>
+              <ol>
+                <li>Open <a href="https://script.google.com" target="_blank" rel="noopener">script.google.com</a> while signed into your Gmail account and click <strong>New Project</strong>.</li>
+                <li>Paste the script below, click <strong>Deploy → New deployment → Web app</strong> (Execute as: <em>Me</em>, Who has access: <em>Anyone</em>), and paste the Web App URL above!</li>
+              </ol>
+              <pre><code>function doPost(e) {
+  var data = JSON.parse(e.postData.contents);
+  var folderName = data.folderName || 'Yourday Journals';
+  var folders = DriveApp.getFoldersByName(folderName);
+  var folder = folders.hasNext() ? folders.next() : DriveApp.createFolder(folderName);
+  upsertFile(folder, 'yourday-vault-backup.json', JSON.stringify(data.vault, null, 2), MimeType.PLAIN_TEXT);
+  (data.markdownFiles || []).forEach(function(f) {
+    upsertFile(folder, f.fileName, f.markdown, MimeType.PLAIN_TEXT);
+  });
+  return ContentService.createTextOutput(JSON.stringify({ ok: true, folderId: folder.getId(), folderUrl: folder.getUrl() }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+function upsertFile(folder, name, content, mime) {
+  var files = folder.getFilesByName(name);
+  if (files.hasNext()) { files.next().setContent(content); }
+  else { folder.createFile(name, content, mime); }
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="form-check-row">
+            <label class="checkbox-label">
+              <input type="checkbox" id="driveAutoSyncCheck" checked />
+              <span>Automatically sync to Google Drive in the background on every autosave</span>
+            </label>
+          </div>
+
+          <div class="modal-footer-Split">
+            <label class="btn-secondary file-label">
+              📂 Restore from Drive Backup JSON
+              <input type="file" id="driveImportFileInput" accept=".json" class="hidden" />
+            </label>
+            <button type="submit" class="btn-primary">Save Google Drive Settings</button>
+          </div>
+        </form>
+
+        <div class="sync-history-section">
+          <h4>Recent Background Sync Activity Log</h4>
+          <div id="driveSyncHistoryList" class="sync-history-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       5. MODAL: CREATE OR EDIT JOURNAL (UNLIMITED JOURNALS & ENCRYPTED LOCKS)
+       ========================================================================= -->
+  <div id="journalModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="journalModalTitle">Create New Journal</h3>
+        <button type="button" class="modal-close" data-close="journalModal">✕</button>
+      </div>
+      <form id="journalForm" class="modal-body">
+        <input type="hidden" id="journalFormId" />
+        <div class="form-group">
+          <label for="journalTitleInput">Journal Title</label>
+          <input type="text" id="journalTitleInput" required placeholder="e.g., Morning Gratitude, Dream Log, Private Vault" />
+        </div>
+        <div class="form-group">
+          <label for="journalSubtitleInput">Subtitle / Purpose</label>
+          <input type="text" id="journalSubtitleInput" placeholder="e.g., Daily reflections and personal milestones" />
+        </div>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="journalCategorySelect">Journal Type</label>
+            <select id="journalCategorySelect">
+              <option value="Personal">Personal Diary</option>
+              <option value="Gratitude">Gratitude Journal</option>
+              <option value="Private Vault">Encrypted Secret Vault</option>
+              <option value="Creativity">Creative & Ideas</option>
+              <option value="Travel">Travel Log</option>
+              <option value="Dream">Dream Journal</option>
+              <option value="Work">Work & Career</option>
+              <option value="Five-Year">Five-Year Journal</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="journalCoverSelect">Pro Cover Design</label>
+            <select id="journalCoverSelect">
+              <option value="leather-amber">Classic Amber Leather</option>
+              <option value="midnight-gold">Midnight Starlight & Gold</option>
+              <option value="botanical-sage">Botanical Forest Linen</option>
+              <option value="crimson-moleskine">Crimson Moleskine</option>
+              <option value="ocean-canvas">Oceanic Indigo Canvas</option>
+              <option value="royal-plum">Royal Velvet Plum</option>
+              <option value="minimal-noir">Minimalist Obsidian Noir</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="journalThemeSelect">Default Paper Theme</label>
+            <select id="journalThemeSelect">
+              <option value="parchment">Warm Lined Parchment</option>
+              <option value="ivory-lined">Crisp Ivory Notebook</option>
+              <option value="midnight">Dark Midnight Sanctuary</option>
+              <option value="botanical">Botanical Dot Grid</option>
+              <option value="vintage">Vintage Sepia Ledger</option>
+              <option value="rose">Cherry Blossom Rule</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="journalFontSelect">Default Pro Font</label>
+            <select id="journalFontSelect">
+              <option value="Lora">Lora (Classic Serif)</option>
+              <option value="Merriweather">Merriweather (Editorial)</option>
+              <option value="Playfair Display">Playfair Display</option>
+              <option value="Caveat">Caveat (Handwritten)</option>
+              <option value="Dancing Script">Dancing Script (Cursive)</option>
+              <option value="Patrick Hand">Patrick Hand (Notebook)</option>
+              <option value="Inter">Inter (Modern Sans)</option>
+              <option value="JetBrains Mono">JetBrains Mono (Typewriter)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="lock-config-box">
+          <label class="checkbox-label">
+            <input type="checkbox" id="journalLockCheck" />
+            <span>🔒 Protect this journal with an Encrypted Password Lock (Penzu Pro+)</span>
+          </label>
+          <div id="journalLockFields" class="form-row-2 hidden" style="margin-top: 10px;">
+            <div class="form-group">
+              <label for="journalLockPassword">Journal Lock Password / PIN</label>
+              <input type="password" id="journalLockPassword" placeholder="Enter lock password or PIN" />
+            </div>
+            <div class="form-group">
+              <label for="journalLockHint">Password Hint (Optional)</label>
+              <input type="text" id="journalLockHint" placeholder="e.g., Favorite 4-digit year" />
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" data-close="journalModal">Cancel</button>
+          <button type="submit" class="btn-primary">Save Journal</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       6. MODAL: UNLOCK ENCRYPTED JOURNAL (AES-256-GCM)
+       ========================================================================= -->
+  <div id="unlockJournalModal" class="modal-overlay hidden">
+    <div class="modal-card modal-small">
+      <div class="modal-header">
+        <h3 id="unlockJournalTitle">🔒 Unlock Encrypted Journal</h3>
+        <button type="button" class="modal-close" data-close="unlockJournalModal">✕</button>
+      </div>
+      <form id="unlockJournalForm" class="modal-body">
+        <input type="hidden" id="unlockJournalId" />
+        <p class="helper-text">This journal is protected with Penzu Pro+ encryption. Enter its lock password or PIN to access entries.</p>
+        <p id="unlockJournalHint" class="lock-hint-text"></p>
+        <div class="form-group">
+          <label for="unlockJournalPassword">Journal Password / PIN</label>
+          <input type="password" id="unlockJournalPassword" required placeholder="Enter journal lock password" />
+        </div>
+        <div id="unlockJournalError" class="lock-error hidden"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" data-close="unlockJournalModal">Cancel</button>
+          <button type="submit" class="btn-primary">Unlock Journal</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       7. MODAL: APPEARANCE, THEMES & PRO FONT BUNDLE CUSTOMIZER
+       ========================================================================= -->
+  <div id="themeModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>🎨 Customize Writing Pad, Themes & Pro Fonts</h3>
+        <button type="button" class="modal-close" data-close="themeModal">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Paper Pad Theme</label>
+          <div class="theme-swatch-grid" id="paperThemeSwatches">
+            <button type="button" class="theme-swatch active" data-theme="parchment">Warm Parchment</button>
+            <button type="button" class="theme-swatch" data-theme="ivory-lined">Crisp Ivory</button>
+            <button type="button" class="theme-swatch" data-theme="midnight">Midnight Ink</button>
+            <button type="button" class="theme-swatch" data-theme="botanical">Botanical Grid</button>
+            <button type="button" class="theme-swatch" data-theme="vintage">Vintage Ledger</button>
+            <button type="button" class="theme-swatch" data-theme="rose">Cherry Blossom</button>
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="customFontSelect">Pro & Handwritten Font Bundle</label>
+            <select id="customFontSelect">
+              <option value="Lora">Lora (Classic Book Serif)</option>
+              <option value="Merriweather">Merriweather (Warm Serif)</option>
+              <option value="Playfair Display">Playfair Display (Editorial)</option>
+              <option value="Caveat">Caveat (Handwritten Pen)</option>
+              <option value="Dancing Script">Dancing Script (Calligraphy)</option>
+              <option value="Patrick Hand">Patrick Hand (Casual Print)</option>
+              <option value="Inter">Inter (Clean Sans)</option>
+              <option value="JetBrains Mono">JetBrains Mono (Typewriter)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="customFontSizeSelect">Font Size</label>
+            <select id="customFontSizeSelect">
+              <option value="16px">Compact (16px)</option>
+              <option value="18px" selected>Comfortable (18px)</option>
+              <option value="20px">Large Print (20px)</option>
+              <option value="22px">Handwritten Large (22px)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-primary" data-close="themeModal">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       8. MODAL: ENTRY VERSION HISTORY & RECOVERY (PENZU PRO+)
+       ========================================================================= -->
+  <div id="versionModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>🕓 Entry Version History & Recovery (Pro+)</h3>
+        <button type="button" class="modal-close" data-close="versionModal">✕</button>
+      </div>
+      <div class="modal-body">
+        <p class="helper-text">Yourday automatically records snapshots as you write. Restore any prior version with one click.</p>
+        <div id="versionHistoryList" class="version-history-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       9. MODAL: ACCOUNT CREDENTIALS & WRITING REMINDERS
+       ========================================================================= -->
+  <div id="accountModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>⚙️ Account Security & Daily Writing Reminders</h3>
+        <button type="button" class="modal-close" data-close="accountModal">✕</button>
+      </div>
+      <form id="accountSettingsForm" class="modal-body">
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="accNameInput">Full Name</label>
+            <input type="text" id="accNameInput" required />
+          </div>
+          <div class="form-group">
+            <label for="accEmailInput">Account Email</label>
+            <input type="email" id="accEmailInput" disabled />
+          </div>
+        </div>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="accNewPassInput">Change Account Password (Optional)</label>
+            <input type="password" id="accNewPassInput" placeholder="Leave blank to keep current" />
+          </div>
+          <div class="form-group">
+            <label for="accNewPinInput">Quick-Lock App PIN (4–8 digits)</label>
+            <input type="password" id="accNewPinInput" placeholder="e.g., 1234" />
+          </div>
+        </div>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="accReminderTime">Daily Writing Reminder Time</label>
+            <input type="time" id="accReminderTime" value="20:30" />
+          </div>
+          <div class="form-group">
+            <label for="accAutoLockMinutes">Inactivity Auto-Lock Timer</label>
+            <select id="accAutoLockMinutes">
+              <option value="5">After 5 minutes</option>
+              <option value="15" selected>After 15 minutes</option>
+              <option value="30">After 30 minutes</option>
+              <option value="0">Never auto-lock</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" data-close="accountModal">Cancel</button>
+          <button type="submit" class="btn-primary">Save Account Settings</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
