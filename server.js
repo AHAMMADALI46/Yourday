@@ -732,6 +732,16 @@ function sanitizeUser(user) {
 
 // HTTP Request Body Parser
 function parseBody(req) {
+  if (req.body && typeof req.body === 'object') {
+    return Promise.resolve(req.body);
+  }
+  if (typeof req.body === 'string') {
+    try {
+      return Promise.resolve(JSON.parse(req.body));
+    } catch {
+      return Promise.resolve({});
+    }
+  }
   return new Promise((resolve, reject) => {
     const chunks = [];
     let total = 0;
@@ -807,14 +817,25 @@ const MIME_TYPES = {
   '.ico': 'image/x-icon'
 };
 
-const server = http.createServer(async (req, res) => {
+const requestHandler = async (req, res) => {
+  // CORS Headers for cloud deployments
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  if (req.method === 'OPTIONS') {
+    res.writeHead(204);
+    res.end();
+    return;
+  }
+
   try {
-    const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+    const rawUrl = req.headers['x-matched-path'] || req.url || '/';
+    const parsedUrl = new URL(rawUrl, `http://${req.headers.host || 'localhost'}`);
     const pathname = parsedUrl.pathname;
     const method = req.method.toUpperCase();
 
     // API Router
-    if (pathname.startsWith('/api/')) {
+    if (pathname.startsWith('/api/') || pathname === '/api') {
       const db = loadDb();
 
       // 1. Health & Status
@@ -1544,9 +1565,11 @@ const server = http.createServer(async (req, res) => {
     console.error('Server error:', err);
     sendJson(res, 500, { error: 'Internal server error', detail: err.message });
   }
-});
+};
 
-if (!IS_VERCEL && !process.env.LAMBDA_TASK_ROOT) {
+const server = http.createServer(requestHandler);
+
+if (!IS_VERCEL && !process.env.LAMBDA_TASK_ROOT && require.main === module) {
   server.listen(PORT, () => {
     console.log(`\n=============================================================`);
     console.log(`  Yourday Pro — Private Daily Journal & Google Drive Sync`);
@@ -1556,4 +1579,4 @@ if (!IS_VERCEL && !process.env.LAMBDA_TASK_ROOT) {
   });
 }
 
-module.exports = server;
+module.exports = requestHandler;
